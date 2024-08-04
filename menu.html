@@ -10,7 +10,11 @@
     <div class="main-container">
         <!-- Contenedor lateral para el menú -->
         <nav class="sidebar">
-            <h2>Menú</h2>
+            <div class="logo-container">
+                <img src="http://localhost/Restaurantly/assets/img/logo.png" alt="Logo" class="logo">
+                <h2 class="menu-title">Menú</h2>
+            </div>
+            <div class="divider"></div> <!-- Línea separadora -->
             <ul>
                 <li><a href="#" onclick="loadContent('empresa.html')">Empresa</a></li>
                 <li><a href="#" onclick="loadContent('cliente.html')">Cliente</a></li>
@@ -21,12 +25,19 @@
 
         <!-- Contenedor principal para mostrar el contenido -->
         <div class="content-container">
+            <div id="backgroundImage" class="background-image"></div>
             <iframe id="contentFrame" src="" frameborder="0"></iframe>
+            <div id="welcomeMessage" class="welcome-message">
+                <h1>Bienvenido al sistema de seguros</h1>
+                <p>Selecciona una opción del menú a la izquierda para comenzar.</p>
+            </div>
         </div>
     </div>
 
     <script>
         function loadContent(page) {
+            document.getElementById('welcomeMessage').style.display = 'none';
+            document.getElementById('backgroundImage').style.display = 'none';
             document.getElementById('contentFrame').src = page;
         }
     </script>
