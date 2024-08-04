@@ -1,0 +1,72 @@
+/* General styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+}
+
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Estilo para la barra lateral */
+.sidebar {
+    width: 250px;
+    background: #ff5722; /* Color vibrante para la barra lateral */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    margin: 0;
+    padding-bottom: 20px;
+    font-size: 24px;
+    border-bottom: 2px solid #e64a19;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.sidebar ul li a:hover {
+    background: #ff8a65; /* Color llamativo al pasar el ratón */
+    transform: scale(1.05); /* Ligeramente agranda el elemento */
+}
+
+/* Estilo para el contenedor de contenido */
+.content-container {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}

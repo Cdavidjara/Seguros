@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Empresa</title>
+    <link rel="stylesheet" href="assets/css/empresa.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-box">
+            <h2>Ficha Empresa</h2>
+            <form id="empresa-form">
+                <div class="textbox">
+                    <label for="ci-representante">CI Representante Legal</label>
+                    <input type="text" id="ci-representante" name="ci-representante" placeholder="Ingrese el CI" required>
+                </div>
+                
+                <div class="textbox">
+                    <label for="ruc">RUC</label>
+                    <input type="text" id="ruc" name="ruc" placeholder="Ingrese el RUC" required>
+                </div>
+                
+                <div class="textbox">
+                    <label for="constitucion">Constitución de Empresa</label>
+                    <input type="text" id="constitucion" name="constitucion" placeholder="Ingrese la Constitución" required>
+                </div>
+
+                <div class="file-input-container">
+                    <label for="nomina" class="file-label">Nómina de Socios</label>
+                    <input type="file" id="nomina" name="nomina" class="file-input" accept=".pdf, .doc, .docx, .xls, .xlsx" onchange="updateFileName()">
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn">Enviar</button>
+                    <button type="button" class="btn cancel-btn" onclick="window.location.href='index.html'">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Validar CI Representante Legal
+            let ciRepresentante = document.getElementById("ci-representante");
+            let ruc = document.getElementById("ruc");
+
+            ciRepresentante.addEventListener('input', function() {
+                ciRepresentante.value = ciRepresentante.value.replace(/[^0-9]/g, '').slice(0, 10);
+            });
+
+            ruc.addEventListener('input', function() {
+                ruc.value = ruc.value.replace(/[^0-9]/g, '').slice(0, 13);
+            });
+
+            // Validar formulario al enviar
+            document.getElementById("empresa-form").addEventListener("submit", function(event) {
+                let valid = true;
+                
+                if (ciRepresentante.value.length !== 10) {
+                    alert("El CI debe tener exactamente 10 dígitos.");
+                    valid = false;
+                }
+                if (ruc.value.length !== 13) {
+                    alert("El RUC debe tener exactamente 13 dígitos.");
+                    valid = false;
+                }
+                if (!document.getElementById("nomina").files.length) {
+                    alert("Debe seleccionar un archivo.");
+                    valid = false;
+                }
+
+                if (!valid) {
+                    event.preventDefault();
+                }
+            });
+        });
+
+        // Función para actualizar el nombre del archivo seleccionado
+        function updateFileName() {
+            const fileInput = document.getElementById('nomina');
+            const fileNameSpan = document.getElementById('file-name');
+            const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'Ningún archivo seleccionado';
+            fileNameSpan.textContent = fileName;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/css/login.css">
+    <script>
+        function redirectToRegister() {
+            window.location.href = 'registro.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form>
+                <div class="textbox">
+                    <input type="text" name="usuario" id="usuario" required>
+                    <label for="usuario">Usuario</label>
+                </div>
+                <div class="textbox">
+                    <input type="password" name="contraseña" id="contraseña" required>
+                    <label for="contraseña">Contraseña</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="recordar" name="recordar">
+                    <label for="recordar">Recordar credenciales</label>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <button type="button" class="btn" onclick="redirectToRegister()">Registrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
