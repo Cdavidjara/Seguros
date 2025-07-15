@@ -23,7 +23,7 @@ jobs:
       - name: Run SonarCloud Scan
         uses: sonarsource/sonarqube-scan-action@v2
         with:
-          scanner-options: >
+          args: >
             -Dsonar.organization=Cdavidjara-org
             -Dsonar.projectKey=Cdavidjara_Seguros
             -Dsonar.token=${{ secrets.SONAR_TOKEN }}
