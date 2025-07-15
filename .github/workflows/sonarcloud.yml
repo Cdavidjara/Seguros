@@ -10,6 +10,8 @@ jobs:
   sonarcloud:
     name: SonarCloud Scan
     runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     steps:
       - uses: actions/checkout@v3
@@ -28,4 +30,3 @@ jobs:
             -Dsonar.organization=Cdavidjara-org
             -Dsonar.projectKey=Cdavidjara_Seguros
             -Dsonar.sources=.
-            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
