@@ -8,7 +8,6 @@ on:
 
 jobs:
   sonarcloud:
-    name: SonarCloud Scan
     runs-on: ubuntu-latest
     env:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -27,6 +26,6 @@ jobs:
         with:
           projectBaseDir: .
           args: >
-            -Dsonar.organization=Cdavidjara-org
-            -Dsonar.projectKey=Cdavidjara_Seguros
+            -Dsonar.organization=cdavidjara
+            -Dsonar.projectKey=cdavidjara_seguros
             -Dsonar.sources=.
