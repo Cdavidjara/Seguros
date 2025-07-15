@@ -1,1 +1,22 @@
+name: SonarCloud
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: SonarCloud Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          organization: Cdavidjara-org
+          projectKey: Cdavidjara_Seguros
+          token: ${{ secrets.SONAR_TOKEN }}
 
