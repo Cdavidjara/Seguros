@@ -8,29 +8,23 @@ on:
 
 jobs:
   sonarcloud:
-    name: SonarCloud
+    name: SonarCloud Scan
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up JDK 17
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'adopt'
+          distribution: 'temurin'
 
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v3
+      - name: Run SonarCloud Scan
+        uses: sonarsource/sonarqube-scan-action@v2
         with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        with:
-          args: >
+          scanner-options: >
             -Dsonar.organization=Cdavidjara-org
             -Dsonar.projectKey=Cdavidjara_Seguros
             -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.sources=.
